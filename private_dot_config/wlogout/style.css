@@ -1,0 +1,82 @@
+/**************************/
+/* wlogout --margin 160px */
+/**************************/
+
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+grid {
+	padding: 0px 100px 0px 100px;
+}
+
+button {
+	border-radius: 60px;
+	border-color: #EED49F;
+	border-style: inset;
+	border-width: 6px;
+
+	font-family: "DejaVu Sans Mono", monospace;
+	font-size: small;
+	font-weight: lighter;
+	color: #CAD3F5;
+
+	background-color: rgba(24, 25, 38, 0.9);
+	background-repeat: no-repeat;
+	background-position: 50% 15%;
+	background-size: 50%;
+
+	margin: 20px;
+}
+
+button:hover {
+	border-radius: 80px;
+	border-color: #91D7E3;
+	border-style: inset;
+	border-width: 6px;
+}
+
+button:focus {
+	border-radius: 80px;
+	border-color: #91D7E3;
+	border-style: inset;
+	border-width: 6px;
+}
+
+/*
+button:active {
+	border-radius: 80px;
+	border-color: #ED8796;
+	border-style: inset;
+	border-width: 6px;
+}
+*/
+
+#lock {
+    background-image: image(url("/home/sheric/Pictures/icons/wlogout/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/home/sheric/Pictures/icons/wlogout/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/home/sheric/Pictures/icons/wlogout/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/home/sheric/Pictures/icons/wlogout/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/home/sheric/Pictures/icons/wlogout/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/home/sheric/Pictures/icons/wlogout/reboot.png"));
+}
