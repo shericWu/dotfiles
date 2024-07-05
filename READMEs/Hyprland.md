@@ -203,3 +203,20 @@ $ yay -S swww
 # edit `hyprland.conf`
 
 ```
+
+### flavours
+```sh
+$ yay -S flavours
+$ flavours update all
+```
+
+### kitty
+```sh
+$ kitty +kitten themes
+# choose `Catppuccin-Mocha`
+$ mkdir ~/.config/kitty/themes
+$ cp ~/.config/kitty/current-theme.conf ~/.config/kitty/themes/Catppuccin-Mocha.conf
+$ kitty +kitten themes
+# choose `Catppuccin-Mocha` again
+$ kitten themes --reload-in=all Catppuccin-Mocha
+```
