@@ -3,20 +3,22 @@ See [Hyprland (arch wiki)](https://wiki.archlinux.org/title/Hyprland) and [Maste
 ```sh
 $ pacman -S hyprland kitty
 # For nvidia gpu
-    $ pacman -S linux-headers nvidia-dkms nvidia-uitils egl-wayland polkit gtk3 gtk4
+    $ pacman -S linux-headers nvidia-dkms nvidia-utils egl-wayland polkit gtk3 gtk4
     # edit /etc/pacman.conf
         # uncomment [multilib]
         # uncomment Include = /etc/pacman.d/mirrorlist
     $ pacman -Syu
     $ reboot
-    $ pacman -S lib32-nvidia-utils libva-nvidia-driver
+    $ pacman -S lib32-nvidia-utils libva-nvidia-driver libva-utils
     # edit /etc/default/grub
-        # add `nvidia_drm.modeset=1` to GRUB_CMDLINE_LINUX_DEFAULT
+        --add `nvidia_drm.modeset=1` to GRUB_CMDLINE_LINUX_DEFAULT-- # no more
         # [Notice: no "nvidia."]
         # add NVreg_PreserveVideoMemoryAllocations=1 to GRUB_CMDLINE_LINUX_DEFAULT
     $ grub-mkconfig -o /boot/grub/grub.cfg
     # edit /etc/mkinitcpio.conf
         # add `nvidia nvidia_modeset nvidia_uvm nvidia_drm` to MODULES
+    # create /etc/modprobe.d/nvidia.conf
+        # add `options nvidia_drm modeset=1 fbdev=1`
     $ mkinitcpio -P
     # edit /usr/share/hyprland/hyprland.conf
         # add the following lines
@@ -38,6 +40,10 @@ $ Hyprland
 # paste the added lines in hyprland.conf to ~/.config/hypr/hyprland.conf
 ```
 
+## hardware_acceleration
+See [Hardware_video_acceleration](https://wiki.archlinux.org/title/Hardware_video_acceleration).
+Try it later.
+
 ## Must have
 See [must have](https://wiki.hyprland.org/Useful-Utilities/Must-have/).
 
@@ -45,7 +51,8 @@ See [must have](https://wiki.hyprland.org/Useful-Utilities/Must-have/).
 ```sh
 $ pacman -S swaync
 $ cp /etc/xdg/swaync/config.json ~/.config/swaync/config.json
-$ swaync-client --reload config
+$ cp /etc/xdg/swaync/style.css ~/.config/swaync/style.css
+$ swaync-client --reload-config
 # edit hyprland.conf
     # add `swaync` to "exec-once = ..."
 ```
@@ -120,6 +127,9 @@ $ pacman -S hypridle
 $ touch ~/.config/hypr/hypridle.conf
 # edit hypridle.conf
 ```
+```sh
+$ pacman -S brightnessctl
+```
 
 ### hyprlock
 See [github](https://github.com/hyprwm/hyprlock) and [wiki](https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/).
@@ -167,7 +177,7 @@ $ pacman -S grim slurp
 $ grim -g '$(slurp)'  # take screenshot
 # for binding
 $ pacman -S wev  # to get keycode
-$ yay -S hypicker  # for screen freeze
+$ yay -S hyprpicker  # for screen freeze
 # edit hyprland.conf to set keybinds
 ```
 Another method.
@@ -192,14 +202,14 @@ $ pacman -S waybar
 $ mkdir ~/.config/waybar
 $ cp /etc/xdg/waybar/* ~/.config/waybar
 # replace `sway/workspaces` with `hyprland/workspaecs`
-$ sed -i 's/sway\/workspaces/hyprland\/workspaces/h' ~/.config/waybar/config.jsonc
-$ sed -i 's/sway\/workspaces/hyprland\/workspaces/h' ~/.config/waybar/style.css
+$ sed -i 's/sway\/workspaces/hyprland\/workspaces/g' ~/.config/waybar/config.jsonc
+$ sed -i 's/sway\/workspaces/hyprland\/workspaces/g' ~/.config/waybar/style.css
 ```
 
 ### swww (current)
 For some reason, the image from hyprpaper seems blurring, use [swww](https://github.com/LGFae/swww) instead.
 ```sh
-$ yay -S swww
+$ pacman -S swww
 # edit `hyprland.conf`
 
 ```
